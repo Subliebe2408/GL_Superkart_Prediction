@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    container_name: superkart_backend
+    ports:
+      - "7860:7860"
+    volumes:
+      - ./backend:/app
+    restart: always
+
+  frontend:
+    build: ./frontend
+    container_name: superkart_frontend
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./frontend:/app
+    restart: always
+    depends_on:
+      - backend
